@@ -1,0 +1,24 @@
+Steps to build and run the application.
+1. Download the application.
+2 Install Sqlite3 and register parking.db
+3. Build the project using maven command
+mvn clean install
+4. Run the project using maven spring boot command
+mvn spring-boot:run
+5. Use below Restful sample requests to run and test the services
+
+a) http://localhost:8080/api/parkingLots
+{"name":"parking1",
+"capacity":"100"}	
+
+b) http://localhost:8080/api/park
+
+{"car": {"licenseNumber":106, "color":"red"}, "parkingRule":"evenDistribution"}
+
+c) http://localhost:8080/api/unpark/101
+
+d)http://localhost:8080/api/find/103
+
+e) http://localhost:8080/api/parkingLots/1
+
+f) http://localhost:8080/api/parkingLots/1/sameColor
