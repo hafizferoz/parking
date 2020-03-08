@@ -4,6 +4,7 @@ D:\personal\repo\parking\src\main\java\com\parking\services\ParkingSlotService.j
 D:\personal\repo\parking\src\main\java\com\parking\ParkinglotsApplication.java
 D:\personal\repo\parking\src\main\java\com\parking\services\ParkingLotService.java
 D:\personal\repo\parking\src\main\java\com\parking\config\Config.java
+D:\personal\repo\parking\src\main\java\com\parking\config\SpringSecurityConfig.java
 D:\personal\repo\parking\src\main\java\com\parking\config\DBInitializeConfig.java
 D:\personal\repo\parking\src\main\java\com\parking\models\RequestPark.java
 D:\personal\repo\parking\src\main\java\com\parking\models\Car.java
@@ -15,6 +16,7 @@ D:\personal\repo\parking\src\main\java\com\parking\models\ResponsePark.java
 D:\personal\repo\parking\src\main\java\com\parking\config\SQLiteDialect.java
 D:\personal\repo\parking\src\main\java\com\parking\controllers\ParkingLotController.java
 D:\personal\repo\parking\src\main\java\com\parking\models\ResponseParkingLot.java
+D:\personal\repo\parking\src\main\java\com\parking\config\AuthenticationEntryPoint.java
 D:\personal\repo\parking\src\main\java\com\parking\models\ResponseCarParkingLot.java
 D:\personal\repo\parking\src\main\java\com\parking\services\CarService.java
 D:\personal\repo\parking\src\main\java\com\parking\config\SQLiteIdentityColumnSupport.java

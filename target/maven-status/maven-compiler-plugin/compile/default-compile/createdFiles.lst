@@ -1,3 +1,4 @@
+com\parking\config\SpringSecurityConfig.class
 com\parking\config\Config.class
 com\parking\controllers\ParkingLotController$1.class
 com\parking\models\CarDto.class
@@ -14,6 +15,7 @@ com\parking\controllers\ParkingLotController.class
 com\parking\services\CarService.class
 com\parking\models\ResponseCarParkingLot.class
 com\parking\models\ResponsePark.class
+com\parking\config\AuthenticationEntryPoint.class
 com\parking\models\RequestParkingLot.class
 com\parking\models\ParkingRule.class
 com\parking\config\SQLiteIdentityColumnSupport.class
