@@ -13,9 +13,9 @@ import java.util.List;
 @Transactional
 public interface CarService extends CrudRepository<Car, Integer> {
 
-   Car findByLicenseNumber(String licensePlate);
+   List<Car> findByLicenseNumber(String licensePlate);
    
-   @Query("Select c from Car c where c.parkingSlotNo.parkingLotNumber.parkingLotNumber = ?1")
+   @Query("Select c from Car c where c.parkingSlotNo.endParkingTime is null and c.parkingSlotNo.parkingLotNumber.parkingLotNumber = ?1")
    List<Car> findAllCarsForParkingLot(Integer parkingLotNumber);
    
 

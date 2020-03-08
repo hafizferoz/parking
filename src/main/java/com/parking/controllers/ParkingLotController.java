@@ -100,10 +100,12 @@ public class ParkingLotController {
     }
 
     @RequestMapping(value = "/api/unpark/{licenseNumber}", method = RequestMethod.GET)
-	public ResponseEntity<ResponseUnpark> unpark(@PathVariable String licenseNumber) {
+	public ResponseEntity<ResponseUnpark> unpark(@PathVariable String licenseNumber) throws Exception {
 		ResponseUnpark res = new ResponseUnpark();
-		Car car = carService.findByLicenseNumber(licenseNumber);
-		if (car != null) {
+		List<Car> cars = carService.findByLicenseNumber(licenseNumber);
+		if (cars != null) {
+			Optional<Car> carOpt = cars.stream().filter(c -> c.getParkingSlotNo().getEndParkingTime()==null).findFirst();
+			Car car = carOpt.orElseThrow(()-> new Exception("No such car parked"));
 			ParkingSlot parkingSlot = car.getParkingSlotNo();
 			if (parkingSlot.getEndParkingTime() == null) {
 				parkingSlot.setEndParkingTime(LocalDateTime.now());
@@ -157,17 +159,20 @@ public class ParkingLotController {
 
     @ResponseBody
     @RequestMapping(value = "/api/find/{carLicenseNumber}", method = RequestMethod.GET)
-    public ResponseEntity<ResponsePark>  parkingLotByCarLicenseNumber(@PathVariable  String carLicenseNumber) {
-    	Car car = carService.findByLicenseNumber(carLicenseNumber);
-    	ResponsePark res = new ResponsePark();
-    	if(car!=null){
-    	res.setParkingId(car.getParkingId());
-    	res.setParkingLotNumber(car.getParkingSlotNo().getParkingLotNumber().getParkingLotNumber());
-    	res.setSlotNumber(car.getParkingSlotNo().getParkingSlotNo());
-    	}
-		return new ResponseEntity<ResponsePark> (res ,HttpStatus.OK);
-    	
-    }
+	public ResponseEntity<ResponsePark> parkingLotByCarLicenseNumber(@PathVariable String carLicenseNumber)
+			throws Exception {
+		ResponsePark res = new ResponsePark();
+		List<Car> cars = carService.findByLicenseNumber(carLicenseNumber);
+		if (cars != null) {
+			Optional<Car> carOpt = cars.stream().filter(c -> c.getParkingSlotNo().getEndParkingTime() == null)
+					.findFirst();
+			Car car = carOpt.orElseThrow(() -> new Exception("No such car parked"));
+				res.setParkingId(car.getParkingId());
+				res.setParkingLotNumber(car.getParkingSlotNo().getParkingLotNumber().getParkingLotNumber());
+				res.setSlotNumber(car.getParkingSlotNo().getParkingSlotNo());
+		}
+		return new ResponseEntity<ResponsePark>(res, HttpStatus.OK);
+	}
     @ResponseBody
     @RequestMapping(value = "/api//parkingLots/{parkingLotNumber}/sameColor", method = RequestMethod.GET)
 	public ResponseEntity<List<CarDto>> parkingLotByCarColor(@PathVariable Integer parkingLotNumber) {
