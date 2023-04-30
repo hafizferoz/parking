@@ -35,8 +35,8 @@ public class DBInitializeConfig {
 			statement.executeUpdate(
 					"INSERT INTO UserLogin " +
 					"(userName,password,firstName,lastName,email,mobile) " +
-					"VALUES " + "('bharat0126','dbase123','Bharat','Verma',"
-						+ " 'bharatverma2488@gmail.com','8861456151')"
+					"VALUES " + "('hafiz','dbase123','Feroz','Hafiz',"
+						+ " 'hafizferoz@gmail.com','8861456151')"
 					);
 			statement.close();
 			connection.close();
